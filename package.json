@@ -9,5 +9,8 @@
   },
   "scripts": {
     "preinstall": "make deps/jscoverage/node-jscoverage"
-  }
+  },
+  "dependencies": {
+    "jade": "~0.16.2"
+  }  
 }
