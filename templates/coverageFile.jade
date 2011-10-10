@@ -1,0 +1,73 @@
+!!!
+html
+  head
+    title= title
+    meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+
+    script(type="text/javascript", src="shCore.js")
+    script(type="text/javascript", src="shBrushJScript.js")
+    script(type="text/javascript", src="jquery.min.js")
+
+    link(href="shCore.css", rel="stylesheet", type="text/css")
+    link(href="shThemeDefault.css", rel="stylesheet", type="text/css")
+    link(href="coverage.css", rel="stylesheet", type="text/css")
+
+    script(type="text/javascript")
+      $(document).ready(function() {
+        SyntaxHighlighter.highlight({toolbar: false});
+
+        var hitsByLine = !{JSON.stringify(file)},
+            totalLines = $('td.gutter div').length;
+          
+        function coverageClass(hits) {
+          if (hits === 0) {
+            return 'missed';
+          }
+          if (!hits) {
+            return '';
+          }
+          return 'covered';
+        }
+          
+        for (var i = 1; i <= totalLines; ++i) {
+          var hits = hitsByLine[i],
+              lineSelector = 'div.line.number' + i + ':last';
+          
+          $(lineSelector).addClass(coverageClass(hits));
+        }
+
+        var gutter = $('td.gutter');
+        gutter.after("<td class='hits'></td>");
+
+        var hitsTd = $('td.hits');
+        for (i = 1; i <= totalLines; ++i) {
+          var hits = hitsByLine[i];
+          if (hits === null || hits === undefined) hits = '&nbsp;';
+          hitsTd.append("<div class='hitsCount " + coverageClass(hits) + "'>" + hits + "</div>");
+        }
+      });
+         
+  body
+    h2.coverage= title
+      
+    table#fileSummary.summary
+      thead
+        tr
+          th Coverage
+          th LOC
+          th SLOC
+          th Total Misses
+      tbody
+        tr
+          td.number=    file.coverage.toFixed(2) + '%'
+          td.number=         file.LOC
+          td.number=        file.SLOC
+          td.number= file.totalMisses
+
+    div#jsCode
+      script(type="syntaxhighlighter", class="brush: js")<![CDATA[
+        = '\n'
+        each line in file.source
+          = line + '\n'
+        ]]>
+

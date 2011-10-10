@@ -1,0 +1,44 @@
+!!!
+html
+  head
+    title Code Coverage
+    meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+
+    script(type="text/javascript", src="shCore.js")
+    script(type="text/javascript", src="shBrushJScript.js")
+    script(type="text/javascript", src="jquery.min.js")
+
+    link(href="shCore.css", rel="stylesheet", type="text/css")
+    link(href="shThemeDefault.css", rel="stylesheet", type="text/css")
+    link(href="coverage.css", rel="stylesheet", type="text/css")
+
+  body
+    h1 Test Coverage
+
+    table#summary
+      thead
+        tr
+          th File
+          th Coverage
+          th LOC
+          th SLOC
+          th Missed
+      tfoot
+        tr
+          td.heading Total
+          td.number= cov.coverage.toFixed(2)
+          td.number= cov.LOC
+          td.number= cov.SLOC
+          td.number= cov.totalMisses
+      tbody
+        - for (var name in cov) {
+        -   var file = cov[name];
+        -   if (Array.isArray(file)) {
+            tr
+              td: a(href='#{name}.html')= name
+              td.number= file.coverage.toFixed(2)
+              td.number= file.LOC
+              td.number= file.SLOC
+              td.number= file.totalMisses
+        -   }
+        - }

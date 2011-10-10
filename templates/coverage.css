@@ -1,0 +1,82 @@
+h2.coverage {
+    margin-bottom: 10px;
+}
+
+td.number {
+    text-align: right;
+}
+
+td.heading {
+    font-weight: bold;
+}
+
+table#summary {
+    border-collapse: collapse;
+}
+
+table#summary, table#summary th, table#summary td {
+    border: 1px solid black;
+}
+
+table#summary thead {
+    font-weight: bold;
+}
+
+table#summary thead tr th {
+    padding: 0.3em 0.3em;
+}
+
+table#summary tbody tr td {
+    padding: 0.3em 0.3em;
+}
+
+table#summary tfoot tr td {
+    padding: 0.3em 0.3em;
+}
+
+table#fileSummary {
+    border-collapse: collapse;
+    margin-bottom: 5px;
+}
+
+table#fileSummary, table#fileSummary th, table#fileSummary td {
+    border: 1px solid black;
+}
+
+table#fileSummary thead {
+    font-weight: bold;
+}
+
+table#fileSummary thead tr th {
+    padding: 0.3em 0.3em;
+}
+
+table#fileSummary tbody tr td {
+    padding: 0.3em 0.3em;
+}
+
+.line.covered {
+    background-color: #CCFFCC ! important;
+}
+
+.line.missed {
+    background-color: #FF9999 ! important;
+}
+
+div.hitsCount {
+    border-right: 2px solid grey ! important;
+    padding: 0 0.5em 0 1em ! important;
+    text-align: right ! important;
+}
+
+.hitsCount.covered {
+    color: green;
+}
+
+.hitsCount.missed {
+    color: red;
+}
+
+.syntaxhighlighter {
+    border: 1px solid black;
+}
