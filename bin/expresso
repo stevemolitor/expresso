@@ -694,13 +694,14 @@ function coverageClass(hits) {
     }
 };
 
-function copyFile(fromPath, toPath) {
-    // var from = fs.createReadStream(fromPath),
-    //     to = fs.createWriteStream(toPath);
+/**
+ * Copy a file.
+ *
+ * @param  {String} fromPath
+ * @param  {String} toPath
+ */
 
-    // to.once('open', function (fd) {
-    //     pump(from, to);        
-    // });
+function copyFile(fromPath, toPath) {
     childProcess.exec('cp ' + fromPath + ' ' + toPath, function (err, stdout, stderr) {
         if (err) {
             sys.puts("Error copying '" + fromPath + "' to '" + toPath + "' - " + err);
